@@ -1,3 +1,4 @@
+
 import * as React from 'react';
 import { styled, useTheme } from '@mui/material/styles';
 import Box from '@mui/material/Box';
@@ -18,9 +19,9 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
+
 import DashboardIcon from '@mui/icons-material/Dashboard';
 import { Link } from 'react-router-dom';
-
 
 const drawerWidth = 240;
 
@@ -79,6 +80,7 @@ const DrawerHeader = styled('div')(({ theme }) => ({
   justifyContent: 'flex-end',
 }));
 
+
 export default function Sidebar() {
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
@@ -111,7 +113,7 @@ export default function Sidebar() {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" noWrap component="div">
-            ADMIN
+          Admin
           </Typography>
         </Toolbar>
       </AppBar>
@@ -135,26 +137,27 @@ export default function Sidebar() {
         </DrawerHeader>
         <Divider />
         <List>
-          {/* {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => ( */}
-            <ListItem disablePadding>
-              <ListItemButton  component={Link} to={"/Admin/"}>
+            <ListItem  disablePadding>
+              <ListItemButton component={Link} to={"/Admin/AHome"}> 
                 <ListItemIcon>
                   <DashboardIcon />
                 </ListItemIcon>
                 <ListItemText primary="DASHBOARD" />
               </ListItemButton>
             </ListItem>
-          {/* ))} */}
         </List>
         <Divider />
         <List>
-          {['All mail', 'Trash', 'Spam'].map((text, index) => (
+          {[{label:'Users',link:'/Admin/ManageUser'},{label:'Category',link:'/Admin/ManageCategory'}, {label:'Products',link:'/Admin/ManageProduct'}].map((text, index) => (
             <ListItem key={text} disablePadding>
               <ListItemButton>
+             
                 <ListItemIcon>
                   {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
                 </ListItemIcon>
-                <ListItemText primary={text} />
+                <Link to={text.link} style={{textDecoration:"none"}}>
+                <ListItemText primary={text.label} />
+                   </Link>
               </ListItemButton>
             </ListItem>
           ))}
@@ -162,7 +165,7 @@ export default function Sidebar() {
       </Drawer>
       <Main open={open}>
         <DrawerHeader />
-        <Typography sx={{ marginBottom: 2 }}>
+        {/* <Typography sx={{ marginBottom: 2 }}>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
           tempor incididunt ut labore et dolore magna aliqua. Rhoncus dolor purus non
           enim praesent elementum facilisis leo vel. Risus at ultrices mi tempus
@@ -188,7 +191,7 @@ export default function Sidebar() {
           tristique sollicitudin nibh sit. Ornare aenean euismod elementum nisi quis
           eleifend. Commodo viverra maecenas accumsan lacus vel facilisis. Nulla
           posuere sollicitudin aliquam ultrices sagittis orci a.
-        </Typography>
+        </Typography> */}
       </Main>
     </Box>
   );

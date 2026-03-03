@@ -7,8 +7,8 @@ export default function App() {
     <div>
       <BrowserRouter>
       <Routes>
-        <Route path='/' element={<UserRoute/>}/>
-        <Route path='/Admin' element={<AdminRoute/>}/>
+        <Route path='/*' element={<UserRoute/>}/>
+        <Route path='/Admin/*' element={<AdminRoute/>}/>
       </Routes>
       </BrowserRouter>
     </div>
