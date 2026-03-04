@@ -1,5 +1,6 @@
 const express = require("express");
 const dbconnection = require("./db");
+const userroute = require("./Routes/user_Routes")
 // Express is the web framework, which handles request and response
 
 const app = express();
@@ -20,8 +21,12 @@ dbconnection()
 //app.get is a method that defines a route for handling request(POST,GET,DELETE,PUT)
 // /apitest is endpoint
 //req is request object that contains information about incomming request
-//res is respnse object thatused to send reponse back to the client
+//res is respnse object that used to send reponse back to the client
 app.get('/apitest',(req,res)=>{
-    res.send("Hello Server") //respnse text from server
+    res.send("Hello Server") //response text from server
 
 })
+
+app.use(express.json())
+app.use('/user',require("./Routes/user_Routes"))
+//app.use('/user',userroute)
