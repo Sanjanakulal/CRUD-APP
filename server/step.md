@@ -7,12 +7,10 @@ npm install express
 npm install mongoose
 npm install nodemon
 
-//create the model..which includes
- product_name,
- product_price,
- product_quantity,
- product_description 
+express- it is a web framework and used to handle incomming requests and handle response.
+It listens to incoming requests and respond to them.
 
- model,controller,route,index,js
+mongoose - handles database connection
+cors - (cross origin resource sharing) it is used for the security purpose.
+nodemon - this command is used to run the server,here server runs whenever there is changes in the file.
 
- in same collection add new request...with path name

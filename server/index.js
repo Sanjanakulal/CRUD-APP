@@ -1,6 +1,7 @@
 const express = require("express");
 const dbconnection = require("./db");
 const userroute = require("./Routes/user_Routes")
+const productroute = require("./Routes/product_routes")
 // Express is the web framework, which handles request and response
 
 const app = express();
@@ -28,5 +29,7 @@ app.get('/apitest',(req,res)=>{
 })
 
 app.use(express.json())
-app.use('/user',require("./Routes/user_Routes"))
-//app.use('/user',userroute)
+// app.use('/user',require("./Routes/user_Routes"))
+app.use('/user',userroute)
+
+app.use('/product',productroute)

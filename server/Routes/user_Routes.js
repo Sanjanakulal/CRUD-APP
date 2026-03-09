@@ -1,8 +1,13 @@
 const express = require('express')
-const registeruser = require('../Controller/User_controller')
+const {registeruser,getuser,getuserbyid,deleteuser,updateuser} = require('../Controller/User_controller')
 
 const route = express.Router();
 
 route.post('/registeruser',registeruser)
+route.get('/getuser',getuser)
+route.get('/getuserbyid/:id',getuserbyid)
+route.delete('/deleteuser/:id',deleteuser)
+route.put('/updateuser/:id',updateuser)
+
 
 module.exports = route
