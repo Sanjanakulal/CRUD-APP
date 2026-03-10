@@ -3,6 +3,7 @@ import Typography from '@mui/material/Typography'
 import Paper from '@mui/material/Paper'
 import TextField from '@mui/material/TextField'
 import Button from '@mui/material/Button'
+import axios from 'axios'
 
 
 export default function Register() {
@@ -20,13 +21,24 @@ export default function Register() {
   }
 
   const handleregister =()=>{
+  console.log("form details:",formdata)
+  axios.post("http://localhost:7000/user/registeruser",formdata)
+  .then((res)=>{
+   console.log("registered user:" ,res.data)
+  //  alert("registered successfully")
+   alert(res.data.message)
+  })
+  .catch((error)=>{
+   console.log(error)
+  })
 
-    const existingusers = JSON.parse(localStorage.getItem('userdetails')) || [];
-    console.log(existingusers)
-    const allusers =[...existingusers,formdata]
+    //using local storage
+    // const existingusers = JSON.parse(localStorage.getItem('userdetails')) || [];
+    // console.log(existingusers)
+    // const allusers =[...existingusers,formdata]
 
-    localStorage.setItem('userdetails',JSON.stringify(allusers))
-    alert("registration done!!")
+    // localStorage.setItem('userdetails',JSON.stringify(allusers))
+    // alert("registration done!!")
   }
   return (
     <div>

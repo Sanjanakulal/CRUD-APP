@@ -1,5 +1,6 @@
 const express = require("express");
 const dbconnection = require("./db");
+const cors = require("cors")
 const userroute = require("./Routes/user_Routes")
 const productroute = require("./Routes/product_routes")
 // Express is the web framework, which handles request and response
@@ -28,6 +29,7 @@ app.get('/apitest',(req,res)=>{
 
 })
 
+app.use(cors())  //it accepts the request,used for security purpose
 app.use(express.json())
 // app.use('/user',require("./Routes/user_Routes"))
 app.use('/user',userroute)
