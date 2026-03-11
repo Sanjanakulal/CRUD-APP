@@ -12,8 +12,8 @@ export default function UserRoute() {
       <Routes>
         <Route path='/UHome' element={<UHome/>}/>
         <Route path='/UAbout' element={<UAbout/>}/>
-        <Route path='/Register' element={<Register/>} />
-        <Route path='/' element={<Addproudct/>} />
+        <Route path='/' element={<Register/>} />
+        <Route path='/Addproduct' element={<Addproudct/>} />
       </Routes>
     </div>
   )

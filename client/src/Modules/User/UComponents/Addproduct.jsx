@@ -43,7 +43,7 @@ export default function Addproudct() {
   return (
     <div>
       <Paper elevation={20} style={{width:"550px",padding:"20px",margin:"50px auto"}}>
-     <Typography variant='h3'>Add Product Page</Typography>
+     <Typography variant='h3' style={{fontFamily:"poppins"}}>Add Product Page</Typography>
      <TextField variant='outlined' type='text' label='Name' name='product_name' fullWidth style={{marginBottom:"10px"}} onChange={handlechange}/>
      <TextField variant='outlined' type='number' label='Price' name='product_price' fullWidth style={{marginBottom:"10px"}} onChange={handlechange}/>
      <TextField variant='outlined' type='number' label='Quantity' name='product_quantity' fullWidth style={{marginBottom:"10px"}} onChange={handlechange}/>
