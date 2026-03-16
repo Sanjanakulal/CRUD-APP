@@ -26,5 +26,30 @@ const getcategory = async(req,res)=>{
         
     }
 }
+const deletecategory =async(req,res)=>{
+    try {
+        const d_id = req.params.id
+        const deletecategory = await categorytable.findByIdAndDelete(d_id)
+        console.log(deletecategory)
+        res.status(200).json({message:"category deleted",d_user:deletecategory})
+    } catch (error) {
+        console.log(error)
+        res.status(500).json({message:"server error",error})
+    }
+}
+const updatecategory = async(req,res)=>{
+    try {
+        // const uid =req.params.id
+        const {id} =req.params
+        const body =req.body
+        const updatedcategory = await categorytable.findByIdAndUpdate(id,body,{new:true})
+        console.log(updatedcategory)
+        res.status(200).json({message:"user updated",updatedata:updatedcategory})
+    } catch (error) {
+        console.log(error)
+        res.status(500).json({message:"server error",error})
+        
+    }
+}
 
-module.exports = {addcategory,getcategory}
+module.exports = {addcategory,getcategory,deletecategory,updatecategory}

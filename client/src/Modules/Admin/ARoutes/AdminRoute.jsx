@@ -21,12 +21,11 @@ export default function AdminRoute() {
                  <Route path='/ManageUser' element={<ManageUser/>} />
                  <Route path='/ManageCategory' element={<ManageCategory/>} />
                  <Route path='/ManageProduct' element={<ManageProduct/>} />
-                 <Route path="/Admin/AddCategory" element={<AddCategory />} />
+                 <Route path="/AddCategory" element={<AddCategory />} />
                  <Route path="/ViewUser" element={<ViewUser />} />
                  <Route path="/ViewProduct" element={<ViewProduct />} />
                  <Route path="/ViewCategory" element={<ViewCategory />} />
-                 
-
+                
             </Routes>
         </div>
     )
