@@ -10,14 +10,14 @@ import { useState } from 'react';
 import { useEffect } from 'react';
 import axios from 'axios';
 
-export default function ViewProduct() {
-    const [products, setProducts] = useState([])
+export default function ViewCategory() {
+    const [categories, setCategories] = useState([])
 
     useEffect(()=>{
-        axios.get('http://localhost:7000/product/getproduct')
+        axios.get('http://localhost:7000/category/getcategory')
         .then((res)=>{
-            console.log(res.data.allproducts)
-            setProducts(res.data.allproducts)
+            console.log(res.data.allcategory)
+            setCategories(res.data.allcategory)
              
         })
         .catch((error)=>{
@@ -30,27 +30,22 @@ export default function ViewProduct() {
       <Table sx={{ minWidth: 650 }} aria-label="simple table">
         <TableHead>
           <TableRow>
-            <TableCell>SL.No</TableCell>
-            <TableCell align="right">Product Name</TableCell>
-            <TableCell align="right">Product Price</TableCell>
-            <TableCell align="right">Product Quantity</TableCell>
-            <TableCell align="right">Product Description</TableCell>
+            <TableCell align="center">SL.No</TableCell>
+            <TableCell align="center">Category Name</TableCell>
+            <TableCell align="center">Category Description</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
-          {products.map((row,index) => (
+          {categories.map((row,index) => (
             <TableRow
               key={row._id}
               sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
             >
-              <TableCell component="th" scope="row">
+              <TableCell component="th" scope="row" align="center">
                 {index+1}
               </TableCell>
-               <TableCell align="right">{row.product_name}</TableCell>
-              <TableCell align="right">{row.product_price}</TableCell>
-              <TableCell align="right">{row.product_quantity}</TableCell>
-              <TableCell align="right">{row.product_description}</TableCell>
-             
+               <TableCell align="center">{row.category_name}</TableCell>
+               <TableCell align="center">{row.category_description}</TableCell>
             </TableRow>
           ))}
         </TableBody>

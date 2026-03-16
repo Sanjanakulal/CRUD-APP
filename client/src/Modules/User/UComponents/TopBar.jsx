@@ -11,9 +11,9 @@ import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
-import AdbIcon from '@mui/icons-material/Adb';
+import StorefrontIcon from '@mui/icons-material/Storefront';
 
-const pages = ['Products', 'Pricing', 'Blog'];
+const pages = ['Home', 'Products', 'Categories'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
 function TopBar() {
@@ -36,26 +36,33 @@ function TopBar() {
   };
 
   return (
-    <AppBar position="static">
+    <AppBar
+      position="static"
+      sx={{
+        backgroundColor: "#1e3a8a",
+        boxShadow: "0px 4px 10px rgba(0,0,0,0.2)"
+      }}
+    >
       <Container maxWidth="xl">
-        <Toolbar disableGutters>
-          <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
+        <Toolbar disableGutters sx={{ minHeight: "70px" }}>
+         <StorefrontIcon sx={{ fontSize: 28, mr: 1, color: "#93c5fd" }} />
           <Typography
-            variant="h6"
+            variant="h5"
             noWrap
             component="a"
             href="#app-bar-with-responsive-menu"
             sx={{
               mr: 2,
               display: { xs: 'none', md: 'flex' },
-              fontFamily: 'monospace',
+              fontFamily: '"Trebuchet MS", sans-serif',
               fontWeight: 700,
-              letterSpacing: '.3rem',
+              letterSpacing: '.12rem',
               color: 'inherit',
               textDecoration: 'none',
+              
             }}
           >
-            LOGO
+            ShopSphere
           </Typography>
 
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
@@ -92,7 +99,7 @@ function TopBar() {
               ))}
             </Menu>
           </Box>
-          <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
+          <StorefrontIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
           <Typography
             variant="h5"
             noWrap
@@ -109,14 +116,28 @@ function TopBar() {
               textDecoration: 'none',
             }}
           >
-            LOGO
+            ShopSphere
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             {pages.map((page) => (
               <Button
                 key={page}
                 onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: 'white', display: 'block' }}
+                // sx={{ my: 2, color: 'white', display: 'block' }}
+                sx={{
+                  mx: 2,
+                  my: 2,
+                  color: 'white',
+                  display: 'block',
+                  fontFamily: '"Segoe UI", sans-serif',
+                  fontWeight: 600,
+                  letterSpacing: '1px',
+                  textTransform: 'capitalize',
+                  fontSize: '16px',
+                  '&:hover': {
+                    color: '#93c5fd'
+                  }
+                }}
               >
                 {page}
               </Button>

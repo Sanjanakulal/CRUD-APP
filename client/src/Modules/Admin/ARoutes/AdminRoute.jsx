@@ -8,6 +8,7 @@ import ManageProduct from '../AComponents/ManageProduct'
 import AddCategory from '../AComponents/AddCategory'
 import ViewUser from '../AComponents/ViewUser'
 import ViewProduct from '../AComponents/ViewProduct'
+import ViewCategory from '../AComponents/ViewCategory'
 
 
 
@@ -16,13 +17,14 @@ export default function AdminRoute() {
         <div>
             <Sidebar/>
             <Routes>
-                <Route path='/AHome' element={<AHome/>} />
-                <Route path='/ManageUser' element={<ManageUser/>} />
+                 <Route path='/AHome' element={<AHome/>} />
+                 <Route path='/ManageUser' element={<ManageUser/>} />
                  <Route path='/ManageCategory' element={<ManageCategory/>} />
                  <Route path='/ManageProduct' element={<ManageProduct/>} />
                  <Route path="/Admin/AddCategory" element={<AddCategory />} />
                  <Route path="/ViewUser" element={<ViewUser />} />
                  <Route path="/ViewProduct" element={<ViewProduct />} />
+                 <Route path="/ViewCategory" element={<ViewCategory />} />
                  
 
             </Routes>
