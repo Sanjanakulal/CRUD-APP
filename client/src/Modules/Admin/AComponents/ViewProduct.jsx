@@ -31,10 +31,10 @@ export default function ViewProduct() {
         <TableHead>
           <TableRow>
             <TableCell>SL.No</TableCell>
-            <TableCell align="right">Product Name</TableCell>
-            <TableCell align="right">Product Price</TableCell>
-            <TableCell align="right">Product Quantity</TableCell>
-            <TableCell align="right">Product Description</TableCell>
+            <TableCell align="center">Product Name</TableCell>
+            <TableCell align="center">Product Price</TableCell>
+            <TableCell align="center">Product Quantity</TableCell>
+            <TableCell align="center">Product Description</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -46,10 +46,10 @@ export default function ViewProduct() {
               <TableCell component="th" scope="row">
                 {index+1}
               </TableCell>
-               <TableCell align="right">{row.product_name}</TableCell>
-              <TableCell align="right">{row.product_price}</TableCell>
-              <TableCell align="right">{row.product_quantity}</TableCell>
-              <TableCell align="right">{row.product_description}</TableCell>
+               <TableCell align="center">{row.product_name}</TableCell>
+              <TableCell align="center">{row.product_price}</TableCell>
+              <TableCell align="center">{row.product_quantity}</TableCell>
+              <TableCell align="center">{row.product_description}</TableCell>
              
             </TableRow>
           ))}

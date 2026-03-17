@@ -44,7 +44,7 @@ const updatecategory = async(req,res)=>{
         const body =req.body
         const updatedcategory = await categorytable.findByIdAndUpdate(id,body,{new:true})
         console.log(updatedcategory)
-        res.status(200).json({message:"user updated",updatedata:updatedcategory})
+        res.status(200).json({message:"category updated",updatedata:updatedcategory})
     } catch (error) {
         console.log(error)
         res.status(500).json({message:"server error",error})
@@ -52,4 +52,17 @@ const updatecategory = async(req,res)=>{
     }
 }
 
-module.exports = {addcategory,getcategory,deletecategory,updatecategory}
+const getcategorybyid = async(req,res)=>{
+    try {
+        const cid = req.params.id
+        console.log(cid)
+        const singlecategory = await categorytable.findById(cid)
+        console.log(singlecategory)
+        res.status(200).json({message:"category found",cdata:singlecategory})
+    } catch (error) {
+      console.log(error)
+      res.status(500).json({message:"server error",error})  
+    }
+}
+
+module.exports = {addcategory,getcategory,deletecategory,updatecategory,getcategorybyid}

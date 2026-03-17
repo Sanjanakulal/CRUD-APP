@@ -10,6 +10,7 @@ import { useState } from 'react';
 import { useEffect } from 'react';
 import axios from 'axios';
 import { Button } from '@mui/material';
+import {Link} from 'react-router-dom';
 
 export default function ViewCategory() {
   const [categories, setCategories] = useState([])
@@ -60,9 +61,9 @@ export default function ViewCategory() {
               </TableCell>
               <TableCell align="center">{row.category_name}</TableCell>
               <TableCell align="center">{row.category_description}</TableCell>
-              <TableCell align="right">
-                <Button variant='outlined'>Update</Button>
-                <Button variant='outlined' onClick={() => HandleDelete(row._id)}>Delete</Button>
+              <TableCell align="center">
+                <Button variant='contained' component={Link} to={`/Admin/UpdateCategory/${row._id}`}>Update</Button>
+                <Button variant='contained' color="error" onClick={() => HandleDelete(row._id)}>Delete</Button>
               </TableCell>
             </TableRow>
           ))}

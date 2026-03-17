@@ -19,7 +19,7 @@ export default function AddCategory() {
   }
 
   const handleregister =()=>{
-  console.log("form details:",categorydata)
+  console.log("category details:",categorydata)
   axios.post("http://localhost:7000/category/addcategory",categorydata)
   .then((res)=>{
    console.log("registered user:" ,res.data)

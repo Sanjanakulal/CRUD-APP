@@ -37,7 +37,7 @@ function TopBar() {
 
   return (
     <AppBar
-      position="static"
+      position="sticky"
       sx={{
         backgroundColor: "#1e3a8a",
         boxShadow: "0px 4px 10px rgba(0,0,0,0.2)"
