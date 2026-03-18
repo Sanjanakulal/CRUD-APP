@@ -62,7 +62,7 @@ export default function ViewCategory() {
               <TableCell align="center">{row.category_name}</TableCell>
               <TableCell align="center">{row.category_description}</TableCell>
               <TableCell align="center">
-                <Button variant='contained' component={Link} to={`/Admin/UpdateCategory/${row._id}`}>Update</Button>
+                <Button variant='contained' sx={{ mr: 1 }} component={Link} to={`/Admin/UpdateCategory/${row._id}`}>Update</Button>
                 <Button variant='contained' color="error" onClick={() => HandleDelete(row._id)}>Delete</Button>
               </TableCell>
             </TableRow>

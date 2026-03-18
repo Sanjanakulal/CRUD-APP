@@ -14,7 +14,7 @@ export default function UpdateCategory() {
     
   })
 
-  const{rowid} = useParams();
+  const{rowid} = useParams(); //It is used to get values from the URL
   const handlechange =(e)=>{
     console.log({...categorydata, [e.target.name]:e.target.value})
      setCategorydata({...categorydata, [e.target.name]:e.target.value})
@@ -30,22 +30,8 @@ export default function UpdateCategory() {
     console.log(error)
     })
     
-    
    },[])
 
-//   const handleregister =()=>{
-//   console.log("form details:",categorydata)
-//   axios.post("http://localhost:7000/category/addcategory",categorydata)
-//   .then((res)=>{
-//    console.log("registered user:" ,res.data)
-//   //  alert("registered successfully")
-//    alert(res.data.message)
-//   })
-//   .catch((error)=>{
-//    console.log(error)
-//   })
-
-//   }
   const handleupdate = async ()=>{
     const catdata = new FormData()
     catdata.append('category_name',categorydata.category_name)
