@@ -4,11 +4,14 @@ const {addproduct,getproduct,getproductbyid,deleteproduct,updateproduct} = requi
 
 const route = express.Router();
 
-route.post('/addproduct',addproduct)
+const upload = require('../Middleware/imageupload')
+
+route.post('/addproduct',upload.single('productimage'),addproduct)
 route.get('/getproduct',getproduct)  
 route.get('/getproductbyid/:id',getproductbyid)
 route.delete('/deleteproduct/:id',deleteproduct)
 route.put('/updateproduct/:id',updateproduct)
+
 
 
 module.exports = route

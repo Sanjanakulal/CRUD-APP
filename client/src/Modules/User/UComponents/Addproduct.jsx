@@ -16,9 +16,10 @@ export default function Addproudct() {
     product_price: '',
     product_quantity: '',
     product_description: '',
-    categoryId:''
+    categoryId:'',
+    productimage:''
 
-  })
+  });
 
   const [category, setCategory] = useState([])
 
@@ -35,13 +36,18 @@ export default function Addproudct() {
   },[])
   const handlechange = (e) => {
     console.log({ ...productdata, [e.target.name]: e.target.value })
-    setProductdata({ ...productdata, [e.target.name]: e.target.value })
+    
+    if(e.target.name === 'productimage'){
+      setProductdata({...productdata,productimage:e.target.files[0]})
+    }else{
+      setProductdata({ ...productdata, [e.target.name]: e.target.value })
+    }
 
   }
 
   const handleregister = () => {
     console.log("form details:", productdata)
-    axios.post("http://localhost:7000/product/addproduct", productdata)
+    axios.post("http://localhost:7000/product/addproduct", productdata,{headers:{'Content-Type':'multipart/form-data'}})
       .then((res) => {
         console.log("registered user:", res.data)
         //  alert("registered successfully")
@@ -58,6 +64,7 @@ export default function Addproudct() {
         <TextField variant='outlined' type='text' label='Name' name='product_name' fullWidth style={{ marginBottom: "10px" }} onChange={handlechange} />
         <TextField variant='outlined' type='number' label='Price' name='product_price' fullWidth style={{ marginBottom: "10px" }} onChange={handlechange} />
         <TextField variant='outlined' type='number' label='Quantity' name='product_quantity' fullWidth style={{ marginBottom: "10px" }} onChange={handlechange} />
+         <TextField variant='outlined' type='file' label='Product Image' name='productimage' InputLabelProps={{shrink:true}} fullWidth style={{ marginBottom: "10px" }} onChange={handlechange} />
         <TextField variant='outlined' multiline rows={5} label='Description' name='product_description' fullWidth style={{ marginBottom: "10px" }} onChange={handlechange} />
         <FormControl fullWidth>
           

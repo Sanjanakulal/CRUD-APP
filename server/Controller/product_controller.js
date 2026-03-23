@@ -3,12 +3,14 @@ const producttable = require("../Models/product_model")
  const addproduct = async(req,res)=>{
     try {
        const{product_name,product_price,product_quantity,product_description,categoryId} =req.body; //destructuring
+       const pimage = req.file ? req.file.filename:null
        const productdetails = new producttable({
        product_name,
        product_price,
        product_quantity,
        product_description,
-       categoryId
+       categoryId,
+       productimage:pimage
        }) 
        await productdetails.save(); //save() mongoose function that stores the document in MongoDB
        res.status(201).json({message:"product added successfully",pdata:productdetails})

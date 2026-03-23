@@ -38,3 +38,5 @@ app.use('/user',userroute)
 app.use('/product',productroute)
 
 app.use('/category',categoryroute)
+
+app.use("/image",express.static("./Uploads"))
