@@ -10,6 +10,7 @@ import ViewUser from '../AComponents/ViewUser'
 import ViewProduct from '../AComponents/ViewProduct'
 import ViewCategory from '../AComponents/ViewCategory'
 import UpdateCategory from '../AComponents/UpdateCategory'
+import UpdateProduct from '../AComponents/UpdateProduct'
 
 
 
@@ -27,7 +28,8 @@ export default function AdminRoute() {
                 <Route path="/ViewProduct" element={<ViewProduct />} />
                 <Route path="/ViewCategory" element={<ViewCategory />} />
                 <Route path="/UpdateCategory/:rowid" element={<UpdateCategory />} />
-
+                <Route path="/UpdateProduct/:rowid" element={<UpdateProduct />} />
+                
             </Routes>
         </div>
     )

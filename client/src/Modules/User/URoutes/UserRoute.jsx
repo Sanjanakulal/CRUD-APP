@@ -5,6 +5,7 @@ import TopBar from '../UComponents/TopBar'
 import UAbout from '../UComponents/UAbout'
 import Register from '../UComponents/Register'
 import Addproudct from '../UComponents/Addproduct'
+import Products from '../UComponents/Products'
 export default function UserRoute() {
   return (
     <div>
@@ -14,6 +15,7 @@ export default function UserRoute() {
         <Route path='/UAbout' element={<UAbout/>}/>
         <Route path='/' element={<Register/>} />
         <Route path='/Addproduct' element={<Addproudct/>} />
+         <Route path='/Products' element={<Products/>} />
       </Routes>
     </div>
   )

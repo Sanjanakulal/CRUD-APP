@@ -12,11 +12,18 @@ import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import StorefrontIcon from '@mui/icons-material/Storefront';
+import { useNavigate } from "react-router-dom";
 
-const pages = ['Home', 'Products', 'Categories'];
+const pages = [
+  { name: "About Us", path: "/UAbout" },
+  { name: "Products", path: "/Products" },
+    { name: "FAQ", path: "/faq" }
+ 
+];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
 function TopBar() {
+  const navigate = useNavigate();
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
 
@@ -45,7 +52,7 @@ function TopBar() {
     >
       <Container maxWidth="xl">
         <Toolbar disableGutters sx={{ minHeight: "70px" }}>
-         <StorefrontIcon sx={{ fontSize: 28, mr: 1, color: "#93c5fd" }} />
+          <StorefrontIcon sx={{ fontSize: 28, mr: 1, color: "#93c5fd" }} />
           <Typography
             variant="h5"
             noWrap
@@ -59,13 +66,13 @@ function TopBar() {
               letterSpacing: '.12rem',
               color: 'inherit',
               textDecoration: 'none',
-              
+
             }}
           >
             ShopSphere
           </Typography>
 
-          <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
+          {/* <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
             <IconButton
               size="large"
               aria-label="account of current user"
@@ -98,6 +105,26 @@ function TopBar() {
                 </MenuItem>
               ))}
             </Menu>
+          </Box> */}
+
+          <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
+            {pages.map((page) => (
+              <Button
+                key={page.name}
+                onClick={() => navigate(page.path)}
+                sx={{
+                  mx: 2,
+                  my: 2,
+                  color: 'white',
+                  fontWeight: 600,
+                  letterSpacing: '1px',
+                  textTransform: 'capitalize',
+                  '&:hover': { color: '#93c5fd' }
+                }}
+              >
+                {page.name}
+              </Button>
+            ))}
           </Box>
           <StorefrontIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
           <Typography
@@ -118,7 +145,7 @@ function TopBar() {
           >
             ShopSphere
           </Typography>
-          <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
+          {/* <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             {pages.map((page) => (
               <Button
                 key={page}
@@ -142,7 +169,7 @@ function TopBar() {
                 {page}
               </Button>
             ))}
-          </Box>
+          </Box> */}
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
