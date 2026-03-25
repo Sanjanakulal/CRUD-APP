@@ -57,7 +57,8 @@ const deleteproduct =async(req,res)=>{
 const updateproduct = async(req,res)=>{
     try {
         const {id} = req.params
-        const body = req.body
+        // const body = req.body
+        const body = req.file ? { ...req.body, productimage: req.file.filename } : req.body
         const updatedproduct = await producttable.findByIdAndUpdate(id,body,{new:true})
         res.status(200).json({message:"product updated",updatedata:updatedproduct})
     } catch (error) {

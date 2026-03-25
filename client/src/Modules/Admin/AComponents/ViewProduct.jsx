@@ -10,7 +10,7 @@ import { useState } from 'react';
 import { useEffect } from 'react';
 import axios from 'axios';
 import { Button } from '@mui/material';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 export default function ViewProduct() {
   const [products, setProducts] = useState([])
@@ -28,16 +28,16 @@ export default function ViewProduct() {
 
   }, [])
 
-     const HandleDelete =(uid)=>{
-          axios.delete(`http://localhost:7000/product/deleteproduct/${uid}`)
-          .then((res)=>{
-           console.log(res)
-           alert("product deleted")
-          })
-          .catch((error)=>{
-           console.log(error)
-          })  
-        }
+  const HandleDelete = (uid) => {
+    axios.delete(`http://localhost:7000/product/deleteproduct/${uid}`)
+      .then((res) => {
+        console.log(res)
+        alert("product deleted")
+      })
+      .catch((error) => {
+        console.log(error)
+      })
+  }
 
   return (
     <TableContainer component={Paper}>
@@ -70,9 +70,9 @@ export default function ViewProduct() {
               <TableCell align="center">
                 <img src={`http://localhost:7000/image/${row.productimage}`} alt="" style={{ width: "200px", height: "200px" }} />
               </TableCell>
-              <TableCell align="center">
-                <Button variant='contained' size="small" sx={{ mr: 3 }} component={Link} to={`/Admin/UpdateProduct/${row._id}`}>Update</Button>
-                <Button variant='contained' color="error" onClick={() => HandleDelete(row._id)}>Delete</Button>
+              <TableCell align="center"  sx={{ whiteSpace: "nowrap" }}>
+                <Button variant='contained' size="small" sx={{ marginRight: "10px" }} component={Link} to={`/Admin/UpdateProduct/${row._id}`}>Update</Button>
+                <Button variant='contained'  size="small" sx={{ marginLeft: "10px" }} color="error" onClick={() => HandleDelete(row._id)}>Delete</Button>
               </TableCell>
 
             </TableRow>

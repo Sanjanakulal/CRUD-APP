@@ -10,7 +10,7 @@ route.post('/addproduct',upload.single('productimage'),addproduct)
 route.get('/getproduct',getproduct)  
 route.get('/getproductbyid/:id',getproductbyid)
 route.delete('/deleteproduct/:id',deleteproduct)
-route.put('/updateproduct/:id',updateproduct)
+route.put('/updateproduct/:id', upload.single('productimage'), updateproduct)
 
 
 
