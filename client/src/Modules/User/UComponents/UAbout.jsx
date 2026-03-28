@@ -1,4 +1,5 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import {
   Box,
   Typography,
@@ -14,6 +15,7 @@ import LocalShippingIcon from "@mui/icons-material/LocalShipping";
 import fashionImg from "../../../assets/fashion.jpg"
 
 export default function UAbout() {
+   const navigate = useNavigate();
   return (
     <Box>
 
@@ -53,6 +55,7 @@ export default function UAbout() {
                   px: 4,
                   borderRadius: 2
                 }}
+                 onClick={() => navigate("/")}
               >
                 Explore Products
               </Button>
@@ -261,6 +264,7 @@ export default function UAbout() {
               px: 5,
               borderRadius: 2
             }}
+             onClick={() => navigate("/")}
           >
             Browse Products
           </Button>
