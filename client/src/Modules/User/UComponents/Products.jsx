@@ -101,8 +101,7 @@ export default function Products() {
       </FormControl>
 
       {filteredproducts.map((pdata) => (
-        <Card key={pdata._id} sx={{ maxWidth: 345, cursor: "pointer" }}
-          onClick={() => navigate(`/product/${pdata._id}`)}>
+        <Card key={pdata._id} sx={{ maxWidth: 345 }}>
           <CardHeader
             avatar={
               <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
@@ -114,8 +113,26 @@ export default function Products() {
                 <MoreVertIcon />
               </IconButton>
             }
-            title={pdata.product_name}
-            subheader="September 14, 2016"
+            // title={pdata.product_name}
+            title={
+              <span
+                style={{ cursor: "pointer", fontWeight: "600" }}
+                onClick={() => navigate(`/product/${pdata._id}`)}
+              >
+                {pdata.product_name}
+              </span>
+            }
+            // subheader="September 14, 2016"
+            subheader={
+              <span
+                style={{ cursor: "pointer", color: "#64748b" }}
+                onClick={() => navigate(`/product/${pdata._id}`)}
+              >
+                {pdata.product_quantity > 0
+                  ? `₹${pdata.product_price} • In Stock`
+                  : `₹${pdata.product_price} • Out of Stock`}
+              </span>
+            }
           />
           {/* <CardMedia
             component="img"
@@ -130,11 +147,17 @@ export default function Products() {
             sx={{
               width: "100%",
               height: "300px",
-              objectFit: "contain"
+              objectFit: "contain",
+              cursor: "pointer"
             }}
+            onClick={() => navigate(`/product/${pdata._id}`)}
           />
           <CardContent>
-            <Typography variant="body2" sx={{ color: 'text.secondary' }}>
+            <Typography
+              variant="body2"
+              sx={{ color: 'text.secondary', cursor: "pointer" }}
+              onClick={() => navigate(`/product/${pdata._id}`)}
+            >
               {pdata.product_description}
             </Typography>
           </CardContent>
