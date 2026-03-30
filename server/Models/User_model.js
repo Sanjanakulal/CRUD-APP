@@ -7,6 +7,7 @@ const userschema = new mongoose.Schema({ //A Schema defines the structure of dat
     address:{type:String}
 })
 
+
 module.exports = mongoose.model("User",userschema)
 
 

@@ -178,7 +178,7 @@ export default function Products() {
             </ExpandMore>
           </CardActions>
           <Collapse in={expanded} timeout="auto" unmountOnExit>
-            <CardContent>
+            {/* <CardContent>
               <Typography sx={{ marginBottom: 2 }}>Method:</Typography>
               <Typography sx={{ marginBottom: 2 }}>
                 Heat 1/2 cup of the broth in a pot until simmering, add saffron and set
@@ -204,7 +204,7 @@ export default function Products() {
               <Typography>
                 Set aside off of the heat to let rest for 10 minutes, and then serve.
               </Typography>
-            </CardContent>
+            </CardContent> */}
           </Collapse>
         </Card>
       ))}

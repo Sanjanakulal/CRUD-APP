@@ -8,6 +8,7 @@ import Addproudct from '../UComponents/Addproduct'
 import Products from '../UComponents/Products'
 import ProductDetails from '../UComponents/ProductDetails'
 import Faq from '../UComponents/Faq'
+import Login from '../UComponents/Login'
 
 function AppContent(){
   const location = useLocation()
@@ -23,6 +24,7 @@ function AppContent(){
          <Route path='/' element={<Products/>} />
          <Route path='/product/:id' element={<ProductDetails/>} />
          <Route path='/faq' element={<Faq/>} />
+         <Route path='/Login' element={<Login/>} />
 
       </Routes>
     </div>
