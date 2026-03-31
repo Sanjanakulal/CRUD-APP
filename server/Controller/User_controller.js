@@ -86,11 +86,11 @@ const Login = async (req, res) => {
             res.json({ success: false, message: "Invalid details" })
         }
         else {
-            // const token = await jwt.sign(userlogin.id, SECRET_KEY);
-            // res.json({ success: true, message: "Login successfull!!", token })
+            const token = await jwt.sign(userlogin.id, SECRET_KEY);
+            res.json({ success: true, message: "Login successfull!!", token })
 
-            const token = jwt.sign({ id: userlogin._id, role: userlogin.role }, SECRET_KEY);
-            res.json({ success: true, message: "Login successful!!", token, role: userlogin.role });
+            // const token = jwt.sign({ id: userlogin._id, role: userlogin.role }, SECRET_KEY);
+            // res.json({ success: true, message: "Login successful!!", token, role: userlogin.role });
         }
     } catch (error) {
         console.log(error)
@@ -100,7 +100,7 @@ const Login = async (req, res) => {
 
 const getprofile = async(req,res)=>{
     try {
-       const user =await usertable.findById(req.userid.id)
+       const user =await usertable.findById(req.userid)
        res.json({success:true,udata:user}) 
     } catch (error) {
         console.log(error)

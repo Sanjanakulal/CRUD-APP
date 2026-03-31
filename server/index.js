@@ -4,6 +4,7 @@ const cors = require("cors")
 const userroute = require("./Routes/user_Routes")
 const productroute = require("./Routes/product_routes")
 const categoryroute = require("./Routes/category_routes")
+const adminroute = require("./Routes/admin_routes")
 // Express is the web framework, which handles request and response
 
 const app = express();
@@ -40,3 +41,5 @@ app.use('/product',productroute)
 app.use('/category',categoryroute)
 
 app.use("/image",express.static("./Uploads"))
+
+app.use('/admin',adminroute)

@@ -27,41 +27,23 @@ export default function Login() {
 
   }
 
-
-  //   const handleregister =()=>{
-  //   console.log("form details:",formdata)
-  //   axios.post("http://localhost:7000/user/registeruser",formdata)  //axios.post() is asynchronous. It returns a Promise.
-  //   .then((res)=>{
-  //    console.log("registered user:" ,res.data)
-  //   //  alert("registered successfully")
-  //    alert(res.data.message)
-  //   })
-  //   .catch((error)=>{
-  //    console.log(error)
-  //   })
-  //   }
   const handleLogin = () => {
-    console.log("logindetails", login)
-    axios.post("http://localhost:7000/user/Login", login)
+    console.log("Login details:", login)
+    axios.post('http://localhost:7000/user/Login', login)
       .then((res) => {
         console.log(res)
         if (res.data.success) {
-          localStorage.setItem("UserToken", res.data.token)
-          alert("Login Successfull!!")
-
-          if (res.data.role === "admin") {
-            navigate("/admin");
-          } else {
-            navigate("/");
-          }
-        } else {
-          alert("Login failed")
+          localStorage.setItem('UserToken', res.data.token)
+          alert("Login successful")
+          navigate('/')
+        }
+        else {
+          alert("Login Failed")
         }
       })
       .catch((error) => {
         console.log(error)
-        alert("Login failed")
-
+        alert("Login Failed")
       })
   }
   // return (
@@ -97,11 +79,11 @@ export default function Login() {
         }}
       >
         <Typography
-          variant="h5"
+          variant='h4'
           style={{
+            fontFamily: "Poppins",
             textAlign: "center",
-            marginBottom: "20px",
-            fontWeight: "600"
+            marginBottom: "20px"
           }}
         >
           Login
@@ -152,6 +134,17 @@ export default function Login() {
         >
           Login
         </Button>
+        <Typography
+          style={{
+            textAlign: "center",
+            marginTop: "15px"
+          }}
+        >
+          New User?{" "}
+          <a href="/Register" style={{ textDecoration: "none", color: "#1976d2" }}>
+            Register
+          </a>
+        </Typography>
       </Paper>
     </div>
   );
