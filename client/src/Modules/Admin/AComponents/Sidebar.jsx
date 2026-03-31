@@ -52,6 +52,8 @@ const Main = styled('main', { shouldForwardProp: (prop) => prop !== 'open' })(
 const AppBar = styled(MuiAppBar, {
   shouldForwardProp: (prop) => prop !== 'open',
 })(({ theme }) => ({
+  backgroundColor: "#1e3a8a",
+  color: "#ffffff",
   transition: theme.transitions.create(['margin', 'width'], {
     easing: theme.transitions.easing.sharp,
     duration: theme.transitions.duration.leavingScreen,
@@ -113,7 +115,7 @@ export default function Sidebar() {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" noWrap component="div">
-          Admin
+            Admin
           </Typography>
         </Toolbar>
       </AppBar>
@@ -137,27 +139,27 @@ export default function Sidebar() {
         </DrawerHeader>
         <Divider />
         <List>
-            <ListItem  disablePadding>
-              <ListItemButton component={Link} to={"/Admin/AHome"}> 
-                <ListItemIcon>
-                  <DashboardIcon />
-                </ListItemIcon>
-                <ListItemText primary="DASHBOARD" />
-              </ListItemButton>
-            </ListItem>
+          <ListItem disablePadding>
+            <ListItemButton component={Link} to={"/Admin/AHome"}>
+              <ListItemIcon>
+                <DashboardIcon />
+              </ListItemIcon>
+              <ListItemText primary="DASHBOARD" />
+            </ListItemButton>
+          </ListItem>
         </List>
         <Divider />
         <List>
-          {[{label:'Users',link:'/Admin/ManageUser'},{label:'Category',link:'/Admin/ManageCategory'}, {label:'Products',link:'/Admin/ManageProduct'},{label:'ViewUser',link:'/Admin/ViewUser'},{label:'ViewProduct',link:'/Admin/ViewProduct'},{label:'AddCategory',link:'/Admin/AddCategory'},{label:'ViewCategory',link:'/Admin/ViewCategory'}].map((text, index) => (
+          {[{ label: 'Users', link: '/Admin/ManageUser' }, { label: 'Category', link: '/Admin/ManageCategory' }, { label: 'Products', link: '/Admin/ManageProduct' }, { label: 'ViewUser', link: '/Admin/ViewUser' }, { label: 'ViewProduct', link: '/Admin/ViewProduct' }, { label: 'AddCategory', link: '/Admin/AddCategory' }, { label: 'ViewCategory', link: '/Admin/ViewCategory' }].map((text, index) => (
             <ListItem key={text} disablePadding>
               <ListItemButton>
-             
+
                 <ListItemIcon>
                   {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
                 </ListItemIcon>
-                <Link to={text.link} style={{textDecoration:"none"}}>
-                <ListItemText primary={text.label} />
-                   </Link>
+                <Link to={text.link} style={{ textDecoration: "none" }}>
+                  <ListItemText primary={text.label} />
+                </Link>
               </ListItemButton>
             </ListItem>
           ))}

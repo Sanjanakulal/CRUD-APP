@@ -9,6 +9,7 @@ import Products from '../UComponents/Products'
 import ProductDetails from '../UComponents/ProductDetails'
 import Faq from '../UComponents/Faq'
 import Login from '../UComponents/Login'
+import MyProfile from '../UComponents/MyProfile'
 
 function AppContent(){
   const location = useLocation()
@@ -25,6 +26,7 @@ function AppContent(){
          <Route path='/product/:id' element={<ProductDetails/>} />
          <Route path='/faq' element={<Faq/>} />
          <Route path='/Login' element={<Login/>} />
+         <Route path='/MyProfile' element={<MyProfile/>} />
 
       </Routes>
     </div>

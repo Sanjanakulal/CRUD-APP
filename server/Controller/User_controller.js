@@ -5,6 +5,10 @@ const SECRET_KEY = "product-crud"
 const registeruser = async (req, res) => {
     try {
         const { name, email, password, phone, address } = req.body;
+        const useremail = await usertable.findOne({email})
+        if(useremail){
+            res.json({message:"email already exists"})
+        }
         const userdetails = new usertable({
             name,
             email,
@@ -82,12 +86,25 @@ const Login = async (req, res) => {
             res.json({ success: false, message: "Invalid details" })
         }
         else {
-            const token = await jwt.sign(userlogin.id, SECRET_KEY);
-            res.json({ success: true, message: "Login successfull!!", token })
+            // const token = await jwt.sign(userlogin.id, SECRET_KEY);
+            // res.json({ success: true, message: "Login successfull!!", token })
+
+            const token = jwt.sign({ id: userlogin._id, role: userlogin.role }, SECRET_KEY);
+            res.json({ success: true, message: "Login successful!!", token, role: userlogin.role });
         }
     } catch (error) {
         console.log(error)
         res.status(500).json({ message: "server error", error })
     }
 }
-module.exports = { registeruser, getuser, getuserbyid, deleteuser, updateuser,Login}
+
+const getprofile = async(req,res)=>{
+    try {
+       const user =await usertable.findById(req.userid.id)
+       res.json({success:true,udata:user}) 
+    } catch (error) {
+        console.log(error)
+        res.status(500).json({ message: "server error", error })
+    }
+}
+module.exports = { registeruser, getuser, getuserbyid, deleteuser, updateuser, Login,getprofile}
