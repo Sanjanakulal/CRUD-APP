@@ -5,9 +5,9 @@ const SECRET_KEY = "product-crud"
 const registeruser = async (req, res) => {
     try {
         const { name, email, password, phone, address } = req.body;
-        const useremail = await usertable.findOne({email})
-        if(useremail){
-            res.json({message:"email already exists"})
+        const useremail = await usertable.findOne({ email })
+        if (useremail) {
+            res.json({ message: "email already exists" })
         }
         const userdetails = new usertable({
             name,
@@ -98,13 +98,23 @@ const Login = async (req, res) => {
     }
 }
 
-const getprofile = async(req,res)=>{
+const getprofile = async (req, res) => {
     try {
-       const user =await usertable.findById(req.userid)
-       res.json({success:true,udata:user}) 
+        const user = await usertable.findById(req.userid)
+        res.json({ success: true, udata: user })
     } catch (error) {
         console.log(error)
         res.status(500).json({ message: "server error", error })
     }
 }
-module.exports = { registeruser, getuser, getuserbyid, deleteuser, updateuser, Login,getprofile}
+
+const updateprofile = async (req,res) => {
+    try {
+        const updateduser = await usertable.findByIdAndUpdate(req.userid, req.body, { new: true })
+        res.json({ message: "profile updated", success: true, udetails: updateduser })
+    } catch (error) {
+        console.log(error)
+        res.status(500).json({ message: "server error", error })
+    }
+}
+module.exports = { registeruser, getuser, getuserbyid, deleteuser, updateuser, Login, getprofile,updateprofile}

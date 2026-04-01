@@ -40,15 +40,20 @@ export default function MyProfile() {
     viewprofile()
   }, [])
 
-  const handleUpdate = async () => {
+  const handleprofile = async (req,res) => {
     try {
-      await axios.put(
-        `http://localhost:7000/user/updateuser/${formdata._id}`, formdata);
+      const response = await fetch("http://localhost:7000/user/updateprofile", { method: "PUT", body:JSON.stringify(formdata),headers: {"Content-Type":"application/json", "auth-token": token } })
+      const details = await response.json()
+      console.log(details.udetails)
+      setFormdata(details.udetails)
       alert("Profile updated");
     } catch (error) {
       console.log(error);
+      res.status(500).json({message:"server error"})
     }
   };
+
+
   // return (
   //   <div>
   //     <Paper elevation={20} style={{ width: "550px", padding: "20px", margin: "50px auto" }}>
@@ -58,93 +63,93 @@ export default function MyProfile() {
   //       <TextField variant='outlined' type='number' label='Phone' name='phone' value={formdata.phone} fullWidth style={{ marginBottom: "10px" }} onChange={handlechange} />
   //       <TextField variant='outlined' multiline rows={5} label='Address' name='address' value={formdata.address} fullWidth style={{ marginBottom: "10px" }} onChange={handlechange} />
   //       <Button variant='contained' fullWidth onClick={handleUpdate}>Update</Button>
-    
+
   //     </Paper>
 
   //   </div>
   // )
   return (
-  <div style={{
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    minHeight: "100vh",
-    background: "#f5f7fa"
-  }}>
-    <Paper
-      elevation={10}
-      style={{
-        width: "400px",
-        padding: "30px",
-        borderRadius: "12px"
-      }}
-    >
-      <Typography
-        variant="h4"
+    <div style={{
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
+      minHeight: "100vh",
+      background: "#f5f7fa"
+    }}>
+      <Paper
+        elevation={10}
         style={{
-          textAlign: "center",
-          fontFamily:'poppins',
-          marginBottom: "20px"
+          width: "400px",
+          padding: "30px",
+          borderRadius: "12px"
         }}
       >
-        Update Profile
-      </Typography>
+        <Typography
+          variant="h4"
+          style={{
+            textAlign: "center",
+            fontFamily: 'poppins',
+            marginBottom: "20px"
+          }}
+        >
+          Update Profile
+        </Typography>
 
-      <TextField
-        label="Name"
-        name="name"
-        value={formdata.name}
-        onChange={handlechange}
-        fullWidth
-        margin="normal"
-      />
+        <TextField
+          label="Name"
+          name="name"
+          value={formdata.name}
+          onChange={handlechange}
+          fullWidth
+          margin="normal"
+        />
 
-      <TextField
-        label="Email"
-        name="email"
-        value={formdata.email}
-        onChange={handlechange}
-        fullWidth
-        margin="normal"
-      />
+        <TextField
+          label="Email"
+          name="email"
+          value={formdata.email}
+          onChange={handlechange}
+          fullWidth
+          margin="normal"
+        />
 
-      <TextField
-        label="Phone"
-        name="phone"
-        value={formdata.phone}
-        onChange={handlechange}
-        fullWidth
-        margin="normal"
-      />
+        <TextField
+          label="Phone"
+          name="phone"
+          value={formdata.phone}
+          onChange={handlechange}
+          fullWidth
+          margin="normal"
+        />
 
-      <TextField
-        label="Address"
-        name="address"
-        value={formdata.address}
-        onChange={handlechange}
-        multiline
-        rows={4}
-        fullWidth
-        margin="normal"
-      />
+        <TextField
+          label="Address"
+          name="address"
+          value={formdata.address}
+          onChange={handlechange}
+          multiline
+          rows={4}
+          fullWidth
+          margin="normal"
+        />
 
-      <Button
-        variant="contained"
-        fullWidth
-        onClick={handleUpdate}
-        sx={{
-          marginTop: 2,
-          padding: "10px",
-          fontWeight: "bold",
-          backgroundColor: "#0f467e",
-          "&:hover": {
-            backgroundColor: "#115293"
-          }
-        }}
-      >
-        Update 
-      </Button>
-    </Paper>
-  </div>
-);
+        <Button
+          variant="contained"
+          fullWidth
+          onClick={handleprofile}
+          sx={{
+            marginTop: 2,
+            padding: "10px",
+            fontWeight: "bold",
+            backgroundColor: "#0f467e",
+            "&:hover": {
+              backgroundColor: "#115293"
+            }
+          }}
+        >
+          Update
+        </Button>
+      </Paper>
+    </div>
+  );
 }

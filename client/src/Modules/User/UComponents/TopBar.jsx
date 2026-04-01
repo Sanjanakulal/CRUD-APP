@@ -12,7 +12,7 @@ import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import StorefrontIcon from '@mui/icons-material/Storefront';
-import { useNavigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 
 const pages = [
   { name: "About Us", path: "/UAbout" },
@@ -20,6 +20,7 @@ const pages = [
   { name: "FAQ", path: "/faq" }
  
 ];
+
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
 function TopBar() {
@@ -41,7 +42,15 @@ function TopBar() {
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
   };
-
+  const handlesettings =(set)=>{
+    if(set === 'Logout'){
+      alert("are you sure want to logout?")
+      localStorage.removeItem('UserToken')
+      navigate("/Login")
+    }else if(set === 'Profile'){
+      navigate("/MyProfile")
+    }
+  }
   return (
     <AppBar
       position="sticky"
@@ -193,7 +202,7 @@ function TopBar() {
               onClose={handleCloseUserMenu}
             >
               {settings.map((setting) => (
-                <MenuItem key={setting} onClick={handleCloseUserMenu}>
+                <MenuItem key={setting} onClick={()=> handlesettings(setting)}>
                   <Typography sx={{ textAlign: 'center' }}>{setting}</Typography>
                 </MenuItem>
               ))}
