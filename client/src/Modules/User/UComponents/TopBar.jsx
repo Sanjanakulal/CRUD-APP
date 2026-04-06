@@ -21,8 +21,12 @@ const pages = [
  
 ];
 
-const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
+// const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
+const token = localStorage.getItem("UserToken")
+console.log(token)
+
+const settings = token ? ['Profile','Logout'] :['Login']
 function TopBar() {
   const navigate = useNavigate();
   const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -57,7 +61,7 @@ function TopBar() {
       sx={{
         backgroundColor: "#1e3a8a",
         boxShadow: "0px 4px 10px rgba(0,0,0,0.2)"
-      }}
+      }} 
     >
       <Container maxWidth="xl">
         <Toolbar disableGutters sx={{ minHeight: "70px" }}>
