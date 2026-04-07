@@ -64,14 +64,11 @@ export default function UpdateProduct() {
     catdata.append('product_price', productdata.product_price)
     catdata.append('product_quantity', productdata.product_quantity)
     catdata.append('product_description', productdata.product_description)
-    catdata.append('productimage', productdata.productimage)
-    // try {
-    //     await axios.put(`http://localhost:7000/product/updateproduct/${rowid}`,productdata)
-    //     alert("product updated")
-    // } catch (error) {
-    //   console.log(error)
-
-    // }
+    if(productdata.productimage){
+      catdata.append('productimage',productdata.productimage)
+    }
+    // catdata.append('productimage', productdata.productimage)
+    
 
     try {
       await axios.put(
@@ -97,6 +94,9 @@ export default function UpdateProduct() {
         <TextField variant='outlined' type='text' label='Price' name='product_price' fullWidth style={{ marginBottom: "10px" }} onChange={handlechange} value={productdata.product_price} />
         <TextField variant='outlined' type='text' label='Quantity' name='product_quantity' fullWidth style={{ marginBottom: "10px" }} onChange={handlechange} value={productdata.product_quantity} />
         <TextField variant='outlined' type='file' label='Product Image' name='productimage' InputLabelProps={{ shrink: true }} fullWidth style={{ marginBottom: "10px" }} onChange={handlechange} />
+
+          <img src={`http://localhost:7000/image/${productdata.productimage}`}/>
+          
         <TextField variant='outlined' multiline rows={5} label='Description' name='product_description' fullWidth style={{ marginBottom: "10px" }} onChange={handlechange} value={productdata.product_description} />
 
         <FormControl fullWidth>
@@ -118,7 +118,7 @@ export default function UpdateProduct() {
 
           </Select>
         </FormControl>
-
+      
         <Button variant='contained' fullWidth onClick={handleupdate} >Update Product</Button>
       </Paper>
 
