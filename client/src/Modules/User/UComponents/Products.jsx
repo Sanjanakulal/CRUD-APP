@@ -20,7 +20,7 @@ import axios from 'axios';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
-import { InputLabel } from '@mui/material';
+import { Button, InputLabel } from '@mui/material';
 import { useNavigate } from "react-router-dom";
 
 const ExpandMore = styled((props) => {
@@ -162,20 +162,30 @@ export default function Products() {
             </Typography>
           </CardContent>
           <CardActions disableSpacing>
-            <IconButton aria-label="add to favorites">
+          
+          <Button variant='contained' color='success' 
+          onClick={()=>navigate(`/BookingForm/${pdata._id}`)} fullWidth>
+            Book Now</Button>
+          
+
+
+
+
+
+            {/* <IconButton aria-label="add to favorites">
               <FavoriteIcon />
             </IconButton>
             <IconButton aria-label="share">
               <ShareIcon />
-            </IconButton>
-            <ExpandMore
+            </IconButton> */}
+            {/* <ExpandMore
               expand={expanded}
               onClick={handleExpandClick}
               aria-expanded={expanded}
               aria-label="show more"
             >
               <ExpandMoreIcon />
-            </ExpandMore>
+            </ExpandMore> */}
           </CardActions>
           <Collapse in={expanded} timeout="auto" unmountOnExit>
             {/* <CardContent>
