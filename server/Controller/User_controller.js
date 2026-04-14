@@ -86,7 +86,7 @@ const Login = async (req, res) => {
             res.json({ success: false, message: "Invalid details" })
         }
         else {
-            const token = await jwt.sign(userlogin.id, SECRET_KEY);
+            const token = await jwt.sign({id:userlogin._id}, SECRET_KEY);
             res.json({ success: true, message: "Login successfull!!", token })
 
             // const token = jwt.sign({ id: userlogin._id, role: userlogin.role }, SECRET_KEY);

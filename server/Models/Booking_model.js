@@ -19,7 +19,7 @@ const bookingschema = new mongoose.Schema({
         default:Date.now
     },
     quantity:{type:Number,default:1},
-    totalamount:{type:Number,required:true},
+    totalamount:{type:Number,required:false},
     bookingstatus:{type:String,
         enum:["Pending","Approved","Rejected","Completed"],
         default:"Pending"
