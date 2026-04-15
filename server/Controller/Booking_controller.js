@@ -2,7 +2,7 @@ const Bookingtable = require('../Models/Booking_model')
 
 const Createbooking = async(req,res) =>{
     try {
-        const {fname,email,phone,address,quantity,productId}= req.body;
+        const {fname,email,phone,address,quantity,totalamount,productId}= req.body;
         const uid = req.userid
         const newbooking = new Bookingtable({
             fullname:fname,
@@ -11,6 +11,7 @@ const Createbooking = async(req,res) =>{
             address,
             quantity,
             productId,
+            totalamount,
             userId:uid
         })
         const savebooking = await newbooking.save()
