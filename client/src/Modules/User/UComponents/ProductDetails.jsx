@@ -2,8 +2,10 @@ import React from 'react'
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 export default function ProductDetails() {
+  const navigate = useNavigate();
   const { id } = useParams();
   const [product, setProduct] = useState(null);
 
@@ -132,6 +134,7 @@ export default function ProductDetails() {
                 fontSize: "16px",
                 fontWeight: "600"
               }}
+                 onClick={() => navigate(`/BookingForm/${product._id}`)} 
             >
               Buy Now
             </button>

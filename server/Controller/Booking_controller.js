@@ -22,7 +22,19 @@ const Createbooking = async(req,res) =>{
     }
 }
 
-module.exports ={Createbooking}
+const getbooking = async(req,res)=>{
+    try {
+        const getallbooking = await Bookingtable.find()
+        console.log(getallbooking)
+        res.status(200).json({message:"booking fetched",allbookings:getallbooking})
+    } catch (error) {
+        console.log(error)
+        res.status(500).json({message:"server error",error})
+        
+    }
+}
+
+module.exports ={Createbooking,getbooking}
 
 
 

@@ -12,6 +12,7 @@ import ViewCategory from '../AComponents/ViewCategory'
 import UpdateCategory from '../AComponents/UpdateCategory'
 import UpdateProduct from '../AComponents/UpdateProduct'
 import AdminLogin from '../AComponents/AdminLogin'
+import ViewBooking from '../AComponents/ViewBooking'
 
 
 
@@ -30,8 +31,9 @@ export default function AdminRoute() {
                 <Route path="/ViewCategory" element={<ViewCategory />} />
                 <Route path="/UpdateCategory/:rowid" element={<UpdateCategory />} />
                 <Route path="/UpdateProduct/:rowid" element={<UpdateProduct />} />
-                <Route path='/AdminLogin' element={<AdminLogin/>}/>
-                
+                <Route path='/AdminLogin' element={<AdminLogin />} />
+                <Route path='/ViewBooking' element={<ViewBooking />} />
+
             </Routes>
         </div>
     )
