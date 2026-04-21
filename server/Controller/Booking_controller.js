@@ -1,40 +1,55 @@
 const Bookingtable = require('../Models/Booking_model')
 
-const Createbooking = async(req,res) =>{
+const Createbooking = async (req, res) => {
     try {
-        const {fname,email,phone,address,quantity,totalamount,productId}= req.body;
+        const { fname, email, phone, address, quantity, totalamount, productId } = req.body;
         const uid = req.userid
         const newbooking = new Bookingtable({
-            fullname:fname,
+            fullname: fname,
             email,
             phone,
             address,
             quantity,
             productId,
             totalamount,
-            userId:uid
+            userId: uid
         })
         const savebooking = await newbooking.save()
-        res.status(201).json({message:"Booking created successfully",bdata:savebooking})
+        res.status(201).json({ message: "Booking created successfully", bdata: savebooking })
     } catch (error) {
         console.log(error)
         res.status(500).json({ message: "server error", error })
     }
 }
 
-const getbooking = async(req,res)=>{
+const getAllbooking = async (req, res) => {
     try {
-        const getallbooking = await Bookingtable.find()
-        console.log(getallbooking)
-        res.status(200).json({message:"booking fetched",allbookings:getallbooking})
+        const bookings = await Bookingtable.find()
+            .populate("userId", "name address phone")
+            .populate("productId", "product_name product_price product_quantity")
+        console.log(bookings)
+        res.status(200).json({ message: " all bookings", bdata: bookings })
     } catch (error) {
         console.log(error)
-        res.status(500).json({message:"server error",error})
-        
+        res.status(500).json({ message: "server error", error })
+
     }
 }
 
-module.exports ={Createbooking,getbooking}
+const updateStatus = async (req, res) => {
+    try {
+      const {status} = req.body;
+      const updatedbooking = await Bookingtable.findByIdAndUpdate(req.params.id,{bstatus:status},{new:true})
+      if(!updatedbooking){
+          res.status(404).json({message:"booking not found"})
+      }
+      res.status(200).json({message:"status updated",ubooking:updatedbooking})
+    } catch (error) {
+        console.log(error)
+        res.status(500).json({ message: "server error", error })
+    }
+}
+module.exports = { Createbooking, getAllbooking,updateStatus}
 
 
 

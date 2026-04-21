@@ -150,7 +150,7 @@ export default function Sidebar() {
         </List>
         <Divider />
         <List>
-          {[{ label: 'Users', link: '/Admin/ManageUser' }, { label: 'Category', link: '/Admin/ManageCategory' }, { label: 'Products', link: '/Admin/ManageProduct' }, { label: 'ViewUser', link: '/Admin/ViewUser' }, { label: 'ViewProduct', link: '/Admin/ViewProduct' }, { label: 'AddCategory', link: '/Admin/AddCategory' }, { label: 'ViewCategory', link: '/Admin/ViewCategory' }].map((text, index) => (
+          {[{ label: 'Users', link: '/Admin/ManageUser' }, { label: 'Category', link: '/Admin/ManageCategory' }, { label: 'Products', link: '/Admin/ManageProduct' }, { label: 'ViewUser', link: '/Admin/ViewUser' }, { label: 'ViewProduct', link: '/Admin/ViewProduct' }, { label: 'AddCategory', link: '/Admin/AddCategory' }, { label: 'ViewCategory', link: '/Admin/ViewCategory' },{label: 'ViewBooking', link: '/Admin/ViewBooking'}].map((text, index) => (
             <ListItem key={text} disablePadding>
               <ListItemButton>
 
