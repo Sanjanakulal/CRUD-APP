@@ -1,7 +1,7 @@
 import { Box, Button, TextField, Typography } from '@mui/material'
 import React, { useEffect } from 'react'
 import { useState } from 'react'
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import axios from 'axios'
 
 export default function BookingForm() {
@@ -16,6 +16,7 @@ export default function BookingForm() {
     totalamount: ""
     
   })
+  const navigate = useNavigate()
   const [price, setPrice] = useState(0)
   const handlechange = (e) => {
     // setBooking({ ...booking, [e.target.name]: e.target.value })
@@ -55,6 +56,7 @@ export default function BookingForm() {
         { headers: { "auth-token": utoken } })
 
       alert("booking done successfully")
+      navigate("/Trackstatus")
     } catch (error) {
       console.log(error)
       alert("booking failed")

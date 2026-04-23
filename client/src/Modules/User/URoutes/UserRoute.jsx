@@ -11,6 +11,7 @@ import Faq from '../UComponents/Faq'
 import Login from '../UComponents/Login'
 import MyProfile from '../UComponents/MyProfile'
 import BookingForm from '../UComponents/BookingForm'
+import Trackstatus from '../UComponents/Trackstatus'
 
 function AppContent(){
   const location = useLocation()
@@ -29,7 +30,7 @@ function AppContent(){
          <Route path='/Login' element={<Login/>} />
          <Route path='/MyProfile' element={<MyProfile/>} />
          <Route path='/BookingForm/:productId' element={<BookingForm/>} />
-
+         <Route path='/Trackstatus' element={<Trackstatus/>} />
       </Routes>
     </div>
   )

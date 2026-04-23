@@ -1,10 +1,11 @@
 const express = require("express")
 const route = express.Router()
-const {Createbooking, getAllbooking, updateStatus} = require('../Controller/Booking_controller')
+const {Createbooking, getAllbooking, updateStatus, getuserbookings} = require('../Controller/Booking_controller')
 const auth = require('../Middleware/Auth')
 
 route.post('/createbooking',auth,Createbooking)
 route.get('/getAllbooking',getAllbooking)
 route.put('/updateStatus',updateStatus)
+route.get('/getuserbookings',auth,getuserbookings)
 
 module.exports = route
