@@ -1,4 +1,6 @@
-import { Button, Dialog, DialogActions, DialogContent, DialogTitle, MenuItem, Select, TableBody } from '@mui/material'
+// import { Button, Dialog, DialogActions, DialogContent, DialogTitle, MenuItem, Select, TableBody } from '@mui/material'
+import { Button, Dialog, DialogActions, DialogContent, DialogTitle, MenuItem, Select } from '@mui/material'
+import TableBody from '@mui/material/TableBody'
 import Table from '@mui/material/Table'
 import TableCell from '@mui/material/TableCell'
 import TableContainer from '@mui/material/TableContainer'
@@ -32,10 +34,12 @@ export default function ViewBooking() {
     setStatus(status)
     setOpen(true)
   }
-  const handleconfirm = async( )=>{
+  const handleconfirm = async()=>{
     try {
       await axios.put(`http://localhost:7000/booking/updateStatus/${selectedbooking._id}`,
         {newstatus:status})
+
+        setStatus(status)
         setOpen(false)
         fetchbookings()
     } catch (error) {

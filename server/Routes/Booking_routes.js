@@ -5,7 +5,8 @@ const auth = require('../Middleware/Auth')
 
 route.post('/createbooking',auth,Createbooking)
 route.get('/getAllbooking',getAllbooking)
-route.put('/updateStatus',updateStatus)
+
+route.put('/updateStatus/:id', updateStatus)
 route.get('/getuserbookings',auth,getuserbookings)
 
 module.exports = route
